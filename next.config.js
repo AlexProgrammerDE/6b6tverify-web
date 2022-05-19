@@ -17,7 +17,7 @@ const securityHeaders = [
   },
   {
     key: 'Content-Security-Policy',
-    value: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' js.hcaptcha.com; style-src 'self' 'unsafe-inline'; object-src 'none'; base-uri 'self'; connect-src 'self' https://verifybackend.6b6t.org; font-src 'self'; frame-src 'self' https://newassets.hcaptcha.com; img-src 'self' data:; manifest-src 'self'; media-src 'self'; worker-src 'none';"
+    value: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://hcaptcha.com https://*.hcaptcha.com; style-src 'self' 'unsafe-inline' https://hcaptcha.com https://*.hcaptcha.com; object-src 'none'; base-uri 'self'; connect-src 'self' https://verifybackend.6b6t.org; font-src 'self' https://hcaptcha.com https://*.hcaptcha.com; frame-src 'self' https://hcaptcha.com https://*.hcaptcha.com; img-src 'self' data:; manifest-src 'self'; media-src 'self'; worker-src 'none';"
   }
 ]
 

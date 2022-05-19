@@ -14,13 +14,13 @@ const Home: NextPage = () => {
 
   const onSubmit = () => {
     if (!username || username === '') {
-        setType('error')
+        setType('warning')
         setResponse('Please enter a username')
         return
     }
 
     if (!token || token === '') {
-        setType('error')
+        setType('warning')
         setResponse('Please complete the captcha')
         return
     }
