@@ -45,7 +45,7 @@ const Home: NextPage = () => {
           <link rel="icon" href="/favicon.ico"/>
         </Head>
 
-        <div className="hero min-h-screen bg-base-200">
+        <div className="hero w-full h-full min-w-screen min-h-screen bg-base-200">
           <div className="hero-content flex-col lg:flex-row-reverse">
             <div className="text-center lg:text-left max-w-lg">
               <h1 className="text-5xl font-bold">Please verify!</h1>
