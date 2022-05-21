@@ -31,8 +31,8 @@ const Home: NextPage = () => {
         token
       })
     }).then(r => r.json()).then(r => {
-      setResponse(r.data.message)
-      setType(r.data.type)
+      setResponse(r.message)
+      setType(r.type)
     }).catch(e => {
       setResponse(e.message)
       setType('error')
