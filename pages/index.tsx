@@ -10,8 +10,11 @@ const Home: NextPage = () => {
   const [token, setToken] = useState<string>()
   const [type, setType] = useState<alertType>()
   const [response, setResponse] = useState<string>()
+  const [loading, setLoading] = useState<boolean>(false)
 
   const onSubmit = () => {
+    if (loading) return
+
     if (!username || username === '') {
       setType('warning')
       setResponse('Please enter a username')
@@ -24,6 +27,7 @@ const Home: NextPage = () => {
       return
     }
 
+    setLoading(true)
     fetch('https://verifybackend.6b6t.org/submit', {
       method: 'POST',
       body: JSON.stringify({
@@ -33,9 +37,11 @@ const Home: NextPage = () => {
     }).then(r => r.json()).then(r => {
       setResponse(r.message)
       setType(r.type)
+      setLoading(false)
     }).catch(e => {
       setResponse(e.message)
       setType('error')
+      setLoading(false)
     })
   }
 
@@ -49,10 +55,21 @@ const Home: NextPage = () => {
 
         <div className="hero w-screen min-h-screen h-full bg-base-200 overflow-hidden">
           <div className="p-2 md:p-4 hero-content flex-col lg:flex-row-reverse">
-            <div className="text-center lg:text-left max-w-lg">
+            <div className="text-center lg:text-left max-w-lg ml-4">
               <h1 className="text-5xl font-bold">Please verify!</h1>
-              <p className="py-6">6b6t requires players with VPNs/Proxies to verify their legitimacy. To do so put your
-                username in the form to the left and complete the captcha!</p>
+              <div className="py-6 flex flex-col">
+                <p className="mb-2 font-bold">To prevent malicious users and attacks, to play on 6b6t with a Proxy/VPN, you must verify at this
+                  website.</p>
+                <h2 className="mb-1 font-bold text-lg">How to?</h2>
+                <ol className="mb-2 list-decimal ml-4">
+                  <li>Enter your username</li>
+                  <li>Complete the captcha</li>
+                  <li>Click the button</li>
+                </ol>
+                <p className="font-bold">Once you are successfully verified, you can join with a Proxy/VPN and during attacks you can join
+                  with no
+                  issues as well.</p>
+              </div>
             </div>
             <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
               <div className="card-body">
@@ -109,13 +126,12 @@ const Home: NextPage = () => {
                   <HCaptcha theme="dark" sitekey="3d6cd239-c3b5-4524-bdaa-0c93704eedb2" onVerify={setToken}/>
                 </div>
                 <div className="form-control mt-6">
-                  <button className="btn btn-primary" onClick={onSubmit}>Verify</button>
+                  <button className={"btn btn-primary" + (loading ? " loading" : "")} onClick={onSubmit}>Verify</button>
                 </div>
               </div>
             </div>
           </div>
         </div>
-
       </>
   )
 }
