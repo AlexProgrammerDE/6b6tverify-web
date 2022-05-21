@@ -2,7 +2,6 @@ import type {NextPage} from 'next'
 import Head from 'next/head'
 import HCaptcha from '@hcaptcha/react-hcaptcha'
 import {useState} from "react";
-import axios from "axios";
 
 type alertType = 'error' | 'success' | 'warning'
 
@@ -25,10 +24,13 @@ const Home: NextPage = () => {
       return
     }
 
-    axios.post('https://verifybackend.6b6t.org/submit', {
-      username,
-      token
-    }).then(r => {
+    fetch('https://verifybackend.6b6t.org/submit', {
+      method: 'POST',
+      body: JSON.stringify({
+        username,
+        token
+      })
+    }).then(r => r.json()).then(r => {
       setResponse(r.data.message)
       setType(r.data.type)
     }).catch(e => {
