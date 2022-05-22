@@ -2,6 +2,8 @@ import type {NextPage} from 'next'
 import Head from 'next/head'
 import HCaptcha from '@hcaptcha/react-hcaptcha'
 import {useState} from "react";
+import Image from "next/image";
+import Logo from '../public/logo.png'
 
 type alertType = 'error' | 'success' | 'warning'
 
@@ -58,7 +60,8 @@ const Home: NextPage = () => {
             <div className="text-center lg:text-left max-w-lg ml-4">
               <h1 className="text-5xl font-bold">Please verify!</h1>
               <div className="py-6 flex flex-col">
-                <p className="mb-2 font-bold">To prevent malicious users and attacks, to play on 6b6t with a Proxy/VPN, you must verify at this
+                <p className="mb-2 font-bold">To prevent malicious users and attacks, to play on 6b6t with a Proxy/VPN,
+                  you must verify at this
                   website.</p>
                 <h2 className="mb-1 font-bold text-lg">How to?</h2>
                 <ol className="mb-2 list-decimal ml-4">
@@ -66,7 +69,8 @@ const Home: NextPage = () => {
                   <li>Complete the captcha</li>
                   <li>Click the button</li>
                 </ol>
-                <p className="font-bold">Once you are successfully verified, you can join with a Proxy/VPN and during attacks you can join
+                <p className="font-bold">Once you are successfully verified, you can join with a Proxy/VPN and during
+                  attacks you can join
                   with no
                   issues as well.</p>
               </div>
@@ -112,6 +116,11 @@ const Home: NextPage = () => {
                         </div>
                     </div>
                 }
+                <div className="flex flex-row justify-center">
+                  <div className="mx-auto">
+                    <Image alt="6b6t Logo" src={Logo} width={92} height={92}/>
+                  </div>
+                </div>
                 <div className="form-control">
                   <label className="label">
                     <span className="label-text">Username</span>
