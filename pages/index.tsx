@@ -69,10 +69,7 @@ const Home: NextPage = () => {
                   <li>Complete the captcha</li>
                   <li>Click the button</li>
                 </ol>
-                <p className="font-bold">Once you are successfully verified, you can join with a Proxy/VPN and during
-                  attacks you can join
-                  with no
-                  issues as well.</p>
+                <p className="font-bold">Once you are successfully verified, you can join with a Proxy/VPN.</p>
               </div>
             </div>
             <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
